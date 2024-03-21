@@ -1,0 +1,11 @@
+###
+# Nur die Bücher
+GET http://localhost:4004/odata/v4/z/Books
+
+###
+# Mit den Autoren
+GET http://localhost:4004/odata/v4/z/Books?$expand=authors
+
+###
+# Mittels Link-Entity, komplett erweitert
+GET http://localhost:4004/odata/v4/z/Books?$expand=authors($expand=book)
