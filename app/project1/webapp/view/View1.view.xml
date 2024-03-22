@@ -4,23 +4,103 @@
     <Page id="page" title="{i18n>title}">
         <content />
         <Button text="Test" press="onBtnTestPress" />
-        <List id="list" items="{path: '/Books', parameters: { 'expand': 'authors($expand=author)' }}">
-            <items>
-                <CustomListItem >
-                    <HBox>
-                        <VBox>
+
+        <!-- 1:1 Binding Books zu Publisher -->
+        <VBox>
+            <Text text="Einfache Tabelle mit 1:1 Binding zu Publisher" class="bigLabel" />
+            <Text text="Ein Buch hat ein Publisher" />
+            <Table id="table" items="{path: '/Books', parameters: { 'expand': 'publisher' }}">
+                <columns>
+                    <Column>
+                        <Text text="ID" />
+                    </Column>
+                    <Column>
+                        <Text text="Title" />
+                    </Column>
+                    <Column>
+                        <Text text="Publisher" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{ID}" />
                             <Text text="{title}" />
-                            <List items="{path: 'authors'}">
+                            <Text text="{publisher/name}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>    
+        </VBox>
+
+        <!-- 1:n Binding umgekehrt (Publisher auf Books) -->
+        <VBox>
+            <Text text="Umgekehrt 1:n Binding von Publisher auf Books" class="bigLabel" />
+            <Text text="Ein Publisher kann mehrere Bücher haben (Beispiel Verlag hat 2 Bücher)" />
+            <Table id="table2" items="{path: '/Publisher', parameters: { 'expand': 'books' }}">
+                <columns>
+                    <Column>
+                        <Text text="ID" />
+                    </Column>
+                    <Column>
+                        <Text text="Name" />
+                    </Column>
+                    <Column>
+                        <Text text="Books" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{ID}" />
+                            <Text text="{name}" />
+                            <List items="{books}" >
+                                <items>
+                                    <CustomListItem>
+                                        <Text text="{title}" />
+                                    </CustomListItem>
+                                </items>
+                            </List> 
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>    
+        </VBox>
+        
+        <!-- n:m Binding mit Hilfstabelle (Link-Table) und mehreren expand's -->
+        <VBox>
+            <Text text="Tabelle mit n:m Binding von Büchern zu Authoren mit Hilfstabelle" class="bigLabel" />
+            <Text text="Ein Buch kann mehrere Autoren haben (Wuthering Heights hat 2). Gelöst mit expand von expand!" />
+            <!-- es ist notwendig direkt die 'authors' komplett zu expanden 
+                 (also authors -> LinkTable -> Author) -->
+            <Table id="table4" items="{path: '/Books', parameters: { 'expand': 'authors($expand=author)' }}">
+                <columns>
+                    <Column>
+                        <Text text="ID" />
+                    </Column>
+                    <Column>
+                        <Text text="Title" />
+                    </Column>
+                    <Column>
+                        <Text text="Authors" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{ID}" />
+                            <Text text="{title}" />
+                            <List items="{authors}" >
                                 <items>
                                     <CustomListItem>
                                         <Text text="{author/name}" />
                                     </CustomListItem>
                                 </items>
                             </List>
-                        </VBox>
-                    </HBox>
-                </CustomListItem>
-            </items>
-        </List>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
     </Page>
 </mvc:View>

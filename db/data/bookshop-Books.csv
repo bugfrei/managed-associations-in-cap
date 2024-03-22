@@ -1,6 +1,6 @@
-ID,title
-201,Wuthering Heights
-207,Jane Eyre
-251,The Raven
-252,Eleonora
-271,Catweazle
+ID,title,publisher_ID
+201,Wuthering Heights,1001
+207,Jane Eyre,1002
+251,The Raven,1002
+252,Eleonora,1003
+271,Catweazle,1004

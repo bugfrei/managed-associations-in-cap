@@ -1,1 +1,5 @@
-/* Enter your custom styles here */
+.bigLabel {
+    font-size: 1.5em;
+    color: #880000;
+    font-weight: bold;
+}

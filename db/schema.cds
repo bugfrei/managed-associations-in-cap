@@ -9,3 +9,8 @@ entity Authors {
     key ID: Integer;
     name:  String;
 }
+
+entity Publishers {
+    key ID: Integer;
+    name: String;
+}
