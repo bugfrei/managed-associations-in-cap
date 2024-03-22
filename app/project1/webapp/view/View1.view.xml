@@ -1,0 +1,26 @@
+<mvc:View controllerName="project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content />
+        <Button text="Test" press="onBtnTestPress" />
+        <List id="list" items="{path: '/Books', parameters: { 'expand': 'authors($expand=author)' }}">
+            <items>
+                <CustomListItem >
+                    <HBox>
+                        <VBox>
+                            <Text text="{title}" />
+                            <List items="{path: 'authors'}">
+                                <items>
+                                    <CustomListItem>
+                                        <Text text="{author/name}" />
+                                    </CustomListItem>
+                                </items>
+                            </List>
+                        </VBox>
+                    </HBox>
+                </CustomListItem>
+            </items>
+        </List>
+    </Page>
+</mvc:View>
