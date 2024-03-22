@@ -1,14 +1,44 @@
-<mvc:View controllerName="project1.controller.View1"
+<mvc:View xmlns:codeeditor="sap.ui.codeeditor" controllerName="project1.controller.View1"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:c="sap.ui.codeeditor">
     <Page id="page" title="{i18n>title}">
         <content />
-        <Button text="Test" press="onBtnTestPress" />
+        <Button text="Debugger" press="onBtnTestPress" />
+
+        <VBox>
+            <Text text="CDS Elemente (Schema, Services...)" class="bigLabel" ></Text>
+            <Panel expandable="true" expanded="false" headerText="schema.cds">
+                <content>
+                    <c:CodeEditor type="xml" height="16em" value="{code>/schema}"></c:CodeEditor>
+                </content>
+            </Panel>
+            <Panel expandable="true" expanded="false" headerText="main.cds (Service)">
+                <content>
+                    <c:CodeEditor type="xml" height="6em" value="{code>/main}"></c:CodeEditor>
+                </content>
+            </Panel>
+            <Panel expandable="true" expanded="false" headerText="extend.cds">
+                <content>
+                    <c:CodeEditor type="xml" height="26em" value="{code>/extend}"></c:CodeEditor>
+                </content>
+            </Panel>
+            <Panel expandable="true" expanded="false" headerText="Data (.csv Files)">
+                <content>
+                    <c:CodeEditor type="xml" height="30em" value="{code>/data}"></c:CodeEditor>
+                </content>
+            </Panel>
+        </VBox>
 
         <!-- 1:1 Binding Books zu Publisher -->
         <VBox>
             <Text text="Einfache Tabelle mit 1:1 Binding zu Publisher" class="bigLabel" />
             <Text text="Ein Buch hat ein Publisher" />
+            <Panel expandable="true" expanded="false" headerText="Quellcode">
+                <content>
+                    <c:CodeEditor type="xml" height="22em" value="{code>/code1}"></c:CodeEditor>
+                </content>
+            </Panel>
             <Table id="table" items="{path: '/Books', parameters: { 'expand': 'publisher' }}">
                 <columns>
                     <Column>
@@ -37,6 +67,11 @@
         <VBox>
             <Text text="Umgekehrt 1:n Binding von Publisher auf Books" class="bigLabel" />
             <Text text="Ein Publisher kann mehrere Bücher haben (Beispiel Verlag hat 2 Bücher)" />
+            <Panel expandable="true" expanded="false" headerText="Quellcode">
+                <content>
+                    <c:CodeEditor type="xml" height="28em" value="{code>/code2}"></c:CodeEditor>
+                </content>
+            </Panel>
             <Table id="table2" items="{path: '/Publisher', parameters: { 'expand': 'books' }}">
                 <columns>
                     <Column>
@@ -71,6 +106,11 @@
         <VBox>
             <Text text="Tabelle mit n:m Binding von Büchern zu Authoren mit Hilfstabelle" class="bigLabel" />
             <Text text="Ein Buch kann mehrere Autoren haben (Wuthering Heights hat 2). Gelöst mit expand von expand!" />
+            <Panel expandable="true" expanded="false" headerText="Quellcode">
+                <content>
+                    <c:CodeEditor type="xml" height="28em" value="{code>/code3}"></c:CodeEditor>
+                </content>
+            </Panel>
             <!-- es ist notwendig direkt die 'authors' komplett zu expanden 
                  (also authors -> LinkTable -> Author) -->
             <Table id="table4" items="{path: '/Books', parameters: { 'expand': 'authors($expand=author)' }}">
