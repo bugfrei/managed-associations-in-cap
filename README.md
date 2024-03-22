@@ -1,25 +1,9 @@
-# Getting Started
+# Beispiele für XML Binding von Associations
 
-Welcome to your new project.
+Siehe Confluence:
 
-It contains these folders and files, following our recommended project layout:
+[Binding auf Associations](https://suportis.atlassian.net/wiki/spaces/SW/pages/121733155/Binding+auf+Associations#)
 
-File or Folder | Purpose
----------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
-`package.json` | project metadata and configuration
-`readme.md` | this getting started guide
+[Association](https://suportis.atlassian.net/wiki/spaces/SW/pages/121241866/Association#)
 
 
-## Next Steps
-
-- Open a new terminal and run `cds watch`
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
-
-
-## Learn More
-
-Learn more at https://cap.cloud.sap/docs/get-started/.

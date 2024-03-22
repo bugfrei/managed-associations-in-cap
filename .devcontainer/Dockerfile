@@ -16,3 +16,5 @@ RUN curl -fsSLO "https://github.com/sharkdp/bat/releases/download/v$BATVER/bat-m
 
 # Install SAP CAP SDK globally at 6.5.0
 RUN su node -c "npm install -g @sap/cds-dk@6.5.0"
+RUN su node -c "npm install @sap/cds-odata-v2-adapter-proxy"
+
