@@ -18,5 +18,5 @@ RUN npm install @sap/cds-odata-v2-adapter-proxy
 RUN npm install sqlite
 
 # Alle anderen Module aus package.json installieren
-RUN npm install
+CMD npm install
 
